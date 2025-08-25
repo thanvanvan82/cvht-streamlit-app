@@ -1,0 +1,1 @@
+# Hàm tìm kiếm nhanh trong sổ tay
