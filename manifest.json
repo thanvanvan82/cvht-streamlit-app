@@ -1,54 +1,62 @@
 [
-  {
-    "name": "QĐ-1226-Quy che dao tao dai hoc-DHTL (ban hanh)",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/1.QD-1226-Quy_che_dao_tao_dai_hoc-DHTL_(ban_hanh).pdf"
-  },
-  {
-    "name": "QD ve tieng anh CTTT.300921.QD.1315",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/2.QD_ve_tieng_anh_CTTT.300921.QD.1315.pdf"
-  },
-  {
-    "name": "QD1767.TA tang cuong ban hanh",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/3.QD1767.TA_tang_cuong_ban_hanh.pdf"
-  },
-  {
-    "name": "QD411_QD_DHTL-Chuan_Dau_Ra_CNTT",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/4.QD411_QD_DHTL-Chuan_Dau_Ra_CNTT.pdf"
-  },
-  {
-    "name": "QuyDinh_Ve_CDR_CNTT_Ban_hanh_theo_QD411-06-4-2022",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/4.1.QuyDinh_Ve_CDR_CNTT_Ban_hanh_theo_QD411-06-4-2022.pdf"
-  },
-  {
-    "name": "QD_1038_16.07.2021_GDTC",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/5.QD_1038_16.07.2021_GDTC.pdf"
-  },
-  {
-    "name": "Quy dinh ve to chuc thi truc tuyen",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/6.Quy_dinh_ve_to_chuc_thi_truc_tuyen.pdf"
-  },
-  {
-    "name": "QD danh gia KQRL (Final 18-8-2016)",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/7.QD_danh_gia_KQRL_(Final_18-8-2016).pdf"
-  },
-  {
-    "name": "QD ve HBKKHT, HBCS (final 12-5-2021)",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/8.QD_ve_HBKKHT,_HBCS_(final_12-5-2021).pdf"
-  },
-  {
-    "name": "QD Khen thuong - KL (Final 10-8-2016)",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/9.QD_Khen_thuong_-_KL_(Final_10-8-2016).pdf"
-  },
-  {
-    "name": "QD 1089 thi OLP mon hoc (Final 10-5-2023)",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/10.QD_1089_thi_OLP_mon_hoc_(Final_10-5-2023).pdf"
-  },
-  {
-    "name": "QD ve Hoc phi final (25-10-2021)",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/11.QD_ve_Hoc_phi_final_(25-10-2021).pdf"
-  },
-  {
-    "name": "QD ngoai tru",
-    "url": "https://dpmmhqqqsjlhgbepzhdt.supabase.co/storage/v1/object/public/TLU/12.QD_ngoai_tru.pdf"
-  }
+    {
+        "name": "1._QD-1226-Quy_che_dao_tao_dai_hoc-DHTL_(ban_hanh).pdf",
+        "title": "1. Quy chế đào tạo trình độ đại học",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/1.QD-1226-Quy_che_dao_tao_dai_hoc-DHTL_(ban_hanh).pdf"
+    },
+    {
+        "name": "2._QD_ve_tieng_anh_CTTT.300921.QD.1315.pdf",
+        "title": "2. Quy định tiếng Anh đối với sinh viên Chương trình tiên tiến",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/2._QD_ve_tieng_anh_CTTT.300921.QD.1315.pdf"
+    },
+    {
+        "name": "3._QD1767.TA_tang_cuong_ban_hanh.pdf",
+        "title": "3. Quy định về khối lượng và tổ chức học phần tiếng Anh tăng cường",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/3._QD1767.TA_tang_cuong_ban_hanh.pdf"
+    },
+    {
+        "name": "4._QD411_QD_DHTL-Chuan_Dau_Ra_CNTT.pdf",
+        "title": "4. Quy định về chuẩn đầu ra Công nghệ thông tin",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/4._QD411_QD_DHTL-Chuan_Dau_Ra_CNTT.pdf"
+    },
+    {
+        "name": "5._QD_1038_16.07.2021_GDTC.pdf",
+        "title": "5. Quy định về đào tạo môn học giáo dục thể chất",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/5._QD_1038_16.07.2021_GDTC.pdf"
+    },
+    {
+        "name": "6._Quy_dinh_ve_to_chuc_thi_truc_tuyen.pdf",
+        "title": "6. Quy định về công tác tổ chức thi trực tuyến",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/6._Quy_dinh_ve_to_chuc_thi_truc_tuyen.pdf"
+    },
+    {
+        "name": "7._QD_danh_gia_KQRL_(Final_18-8-2016).pdf",
+        "title": "7. Hướng dẫn thực hiện quy chế đánh giá kết quả rèn luyện",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/7._QD_danh_gia_KQRL_(Final_18-8-2016).pdf"
+    },
+    {
+        "name": "8._QD_ve_HBKKHT,_HBCS_(final_12-5-2021).pdf",
+        "title": "8. Quy định về xét, cấp Học bổng khuyến khích học tập và Học bổng chính sách",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/8._QD_ve_HBKKHT,_HBCS_(final_12-5-2021).pdf"
+    },
+    {
+        "name": "9._QD_Khen_thuong_-_KL_(Final_10-8-2016).pdf",
+        "title": "9. Quy định về xét khen thưởng & kỷ luật sinh viên",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/9._QD_Khen_thuong_-_KL_(Final_10-8-2016).pdf"
+    },
+    {
+        "name": "10._QD_1089_thi_OLP_mon_hoc_(Final_10-5-2023).pdf",
+        "title": "10. Quy định về thi Olympic các môn học",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/10._QD_1089_thi_OLP_mon_hoc_(Final_10-5-2023).pdf"
+    },
+    {
+        "name": "11._QD_ve_Hoc_phi_final_(25-10-2021).pdf",
+        "title": "11. Quy định về học phí, miễn giảm học phí, hỗ trợ...",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/11._QD_ve_Hoc_phi_final_(25-10-2021).pdf"
+    },
+    {
+        "name": "12._QD_ngoai_tru.pdf",
+        "title": "12. Quy định về công tác sinh viên ngoại trú",
+        "url": "https://vcsvwakdoxtkmijeijbe.supabase.co/storage/v1/object/public/TLU/12._QD_ngoai_tru.pdf"
+    }
 ]

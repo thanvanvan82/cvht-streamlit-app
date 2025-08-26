@@ -1,4 +1,20 @@
+# --- Framework chính ---
 streamlit
-PyMuPDF
-pandas
-scikit-learn
+
+# --- Kết nối & Tải dữ liệu ---
+requests
+supabase
+
+# --- Xử lý PDF & Tìm kiếm (cho trang Sổ tay CVHT) ---
+PyMuPDF # Dùng cho 'import fitz'
+scikit-learn # Dùng cho TfidfVectorizer & cosine_similarity
+
+# --- Framework RAG (cho trang Hỏi & Đáp với Tài liệu) ---
+langchain
+langchain-community
+langchain-google-genai
+
+# --- Các thành phần phụ trợ cho RAG ---
+pypdf # Để LangChain đọc file PDF
+faiss-cpu # Vector store để lưu trữ và tìm kiếm thông tin
+sentence-transformers # Để chạy model embedding (chuyển chữ thành số)
