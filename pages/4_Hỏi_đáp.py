@@ -15,27 +15,42 @@ from langchain.prompts import PromptTemplate
 import tempfile
 import os
        
-# --- 1. KẾT NỐI VỚI SUPABASE & GOOGLE (Cấu hình) ---
+# --- 1. KẾT NỐI VỚI SUPABASE & GOOGLE (Cấu hình cho Streamlit Cloud) ---
 MANIFEST_URL_DEFAULT = "https://raw.githubusercontent.com/thanvanvan82/cvht-streamlit-app/main/manifest.json"
 
-# --- KHỞI TẠO KẾT NỐI VỚI SUPABASE (AN TOÀN) ---
 @st.cache_resource
-def init_connection():
-    """
-    Sử dụng st.secrets để lấy credentials một cách an toàn.
-    """
+def init_supabase_connection():
+    """Khởi tạo kết nối Supabase với error handling cho Streamlit Cloud"""
     try:
+        # Kiểm tra xem có secrets không
+        if "SUPABASE_URL" not in st.secrets:
+            st.warning("⚠️ SUPABASE_URL chưa được cấu hình trong Streamlit Cloud secrets")
+            return None
+            
+        if "SUPABASE_KEY" not in st.secrets:
+            st.warning("⚠️ SUPABASE_KEY chưa được cấu hình trong Streamlit Cloud secrets")
+            return None
+            
         url = st.secrets["SUPABASE_URL"]
         key = st.secrets["SUPABASE_KEY"]
-        return create_client(url, key)
-    except KeyError as e:
-        st.error(f"Lỗi kết nối Supabase: Không tìm thấy {e} trong st.secrets. Vui lòng cấu hình file .streamlit/secrets.toml")
-        st.stop()
+        
+        # Import supabase client (đảm bảo đã cài trong requirements.txt)
+        from supabase import create_client, Client
+        
+        supabase_client = create_client(url, key)
+        st.success("✅ Kết nối Supabase thành công!")
+        return supabase_client
+        
+    except ImportError:
+        st.error("❌ Thiếu package 'supabase'. Thêm 'supabase' vào requirements.txt")
+        return None
     except Exception as e:
-        st.error(f"Lỗi kết nối Supabase: {str(e)}")
-        st.stop()
+        st.error(f"❌ Lỗi kết nối Supabase: {e}")
+        st.info("💡 Hướng dẫn: Vào Settings > Secrets trong Streamlit Cloud để thêm SUPABASE_URL và SUPABASE_KEY")
+        return None
 
-supabase = init_connection()
+# Khởi tạo Supabase client
+supabase: Client = init_supabase_connection()
 
 # Cấu hình Google API
 def init_google_api():
