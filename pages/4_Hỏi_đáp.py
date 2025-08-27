@@ -38,7 +38,7 @@ def init_supabase_connection():
         from supabase import create_client, Client
         
         supabase_client = create_client(url, key)
-        st.success("✅ Kết nối Supabase thành công!")
+        #st.success("✅ Kết nối Supabase thành công!")
         return supabase_client
         
     except ImportError:
@@ -67,7 +67,7 @@ def init_google_api():
         import google.generativeai as genai
         genai.configure(api_key=google_api_key)
         
-        st.success("✅ Google API đã được cấu hình!")
+        #st.success("✅ Google API đã được cấu hình!")
         return google_api_key
         
     except ImportError:
