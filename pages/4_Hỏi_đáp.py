@@ -18,39 +18,24 @@ import os
 # --- 1. KẾT NỐI VỚI SUPABASE & GOOGLE (Cấu hình) ---
 MANIFEST_URL_DEFAULT = "https://raw.githubusercontent.com/thanvanvan82/cvht-streamlit-app/main/manifest.json"
 
+# --- KHỞI TẠO KẾT NỐI VỚI SUPABASE (AN TOÀN) ---
 @st.cache_resource
-def init_supabase_connection():
-    """Khởi tạo kết nối Supabase với error handling cho Streamlit Cloud"""
+def init_connection():
+    """
+    Sử dụng st.secrets để lấy credentials một cách an toàn.
+    """
     try:
-        # Kiểm tra xem có secrets không
-        if "SUPABASE_URL" not in st.secrets:
-            st.warning("⚠️ SUPABASE_URL chưa được cấu hình trong Streamlit Cloud secrets")
-            return None
-            
-        if "SUPABASE_KEY" not in st.secrets:
-            st.warning("⚠️ SUPABASE_KEY chưa được cấu hình trong Streamlit Cloud secrets")
-            return None
-            
         url = st.secrets["SUPABASE_URL"]
         key = st.secrets["SUPABASE_KEY"]
-        
-        # Import supabase client (đảm bảo đã cài trong requirements.txt)
-        from supabase import create_client, Client
-        
-        supabase_client = create_client(url, key)
-        st.success("✅ Kết nối Supabase thành công!")
-        return supabase_client
-        
-    except ImportError:
-        st.error("❌ Thiếu package 'supabase'. Thêm 'supabase' vào requirements.txt")
-        return None
+        return create_client(url, key)
+    except KeyError as e:
+        st.error(f"Lỗi kết nối Supabase: Không tìm thấy {e} trong st.secrets. Vui lòng cấu hình file .streamlit/secrets.toml")
+        st.stop()
     except Exception as e:
-        st.error(f"❌ Lỗi kết nối Supabase: {e}")
-        st.info("💡 Hướng dẫn: Vào Settings > Secrets trong Streamlit Cloud để thêm SUPABASE_URL và SUPABASE_KEY")
-        return None
+        st.error(f"Lỗi kết nối Supabase: {str(e)}")
+        st.stop()
 
-# Khởi tạo Supabase client
-supabase: Client = init_supabase_connection()
+supabase = init_connection()
 
 # Cấu hình Google API
 def init_google_api():
