@@ -14,18 +14,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 import tempfile
 import os
-
-# Debug secrets
-st.sidebar.write("🔍 Debug Secrets:")
-st.sidebar.write("Available keys:", list(st.secrets.keys()))
-
-# Kiểm tra từng key
-for key in ["SUPABASE_URL", "SUPABASE_KEY", "GOOGLE_API_KEY"]:
-    if key in st.secrets:
-        st.sidebar.success(f"✅ {key} found")
-    else:
-        st.sidebar.error(f"❌ {key} missing")
-        
+       
 # --- 1. KẾT NỐI VỚI SUPABASE & GOOGLE (Cấu hình) ---
 MANIFEST_URL_DEFAULT = "https://raw.githubusercontent.com/thanvanvan82/cvht-streamlit-app/main/manifest.json"
 
