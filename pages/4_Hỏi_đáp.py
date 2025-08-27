@@ -258,13 +258,49 @@ else:
         manifest = fetch_manifest(MANIFEST_URL_DEFAULT)
         if manifest:
             doc_options = {item.get('title', item['name']): item for item in manifest}
+            
+            # --- THÊM MỚI: Chức năng chọn tất cả ---
+            col1, col2, col3 = st.columns([2, 1, 1])
+            
+            with col2:
+                select_all = st.button("🔍 Chọn tất cả", use_container_width=True)
+            
+            with col3:
+                clear_all = st.button("❌ Bỏ chọn", use_container_width=True)
+            
+            # Khởi tạo session state cho selected documents
+            if 'selected_docs' not in st.session_state:
+                st.session_state.selected_docs = [list(doc_options.keys())[0]] if doc_options else []
+            
+            # Xử lý nút chọn tất cả
+            if select_all:
+                st.session_state.selected_docs = list(doc_options.keys())
+            
+            # Xử lý nút bỏ chọn
+            if clear_all:
+                st.session_state.selected_docs = []
+            
+            # Multiselect với giá trị từ session state
             selected_titles = st.multiselect(
                 "Chọn một hoặc nhiều tài liệu để hỏi:",
                 options=list(doc_options.keys()),
-                default=[list(doc_options.keys())[0]] if doc_options else [] # Mặc định chọn tài liệu đầu tiên
+                default=st.session_state.selected_docs,
+                key="doc_multiselect"
             )
             
+            # Cập nhật session state khi user thay đổi selection
+            if selected_titles != st.session_state.selected_docs:
+                st.session_state.selected_docs = selected_titles
+            
+            # Hiển thị thống kê
             if selected_titles:
+                st.info(f"📚 Đã chọn {len(selected_titles)}/{len(doc_options)} tài liệu")
+                
+                # Hiển thị danh sách tài liệu đã chọn
+                with st.expander(f"Xem danh sách {len(selected_titles)} tài liệu đã chọn"):
+                    for i, title in enumerate(selected_titles, 1):
+                        st.write(f"{i}. {title}")
+                
                 selected_docs_info = [doc_options[title] for title in selected_titles]
                 # Chuyển list of dicts thành tuple of frozensets để có thể cache
                 hashable_docs_info = tuple(frozenset(item.items()) for item in selected_docs_info)
@@ -295,6 +331,7 @@ else:
                     else:
                         st.warning("Không thể xử lý các tài liệu đã chọn. Có thể file bị lỗi hoặc trống.")
             else:
-                st.warning("Vui lòng chọn ít nhất một tài liệu để bắt đầu hỏi đáp.")
+                st.warning("🔍 Vui lòng chọn ít nhất một tài liệu để bắt đầu hỏi đáp.")
+                st.info("💡 Tip: Sử dụng nút **'Chọn tất cả'** để chọn toàn bộ tài liệu cùng lúc!")
         else:
             st.error("Không thể tải danh sách tài liệu từ manifest.")
