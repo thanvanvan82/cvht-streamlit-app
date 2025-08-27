@@ -18,24 +18,82 @@ import os
 # --- 1. KẾT NỐI VỚI SUPABASE & GOOGLE (Cấu hình) ---
 MANIFEST_URL_DEFAULT = "https://raw.githubusercontent.com/thanvanvan82/cvht-streamlit-app/main/manifest.json"
 
+
 @st.cache_resource
 def init_supabase_connection():
+    """Khởi tạo kết nối Supabase với error handling cho Streamlit Cloud"""
     try:
+        # Kiểm tra xem có secrets không
+        if "SUPABASE_URL" not in st.secrets:
+            st.warning("⚠️ SUPABASE_URL chưa được cấu hình trong Streamlit Cloud secrets")
+            return None
+            
+        if "SUPABASE_KEY" not in st.secrets:
+            st.warning("⚠️ SUPABASE_KEY chưa được cấu hình trong Streamlit Cloud secrets")
+            return None
+            
         url = st.secrets["SUPABASE_URL"]
         key = st.secrets["SUPABASE_KEY"]
-        return create_client(url, key)
+        
+        # Import supabase client (đảm bảo đã cài trong requirements.txt)
+        from supabase import create_client, Client
+        
+        supabase_client = create_client(url, key)
+        st.success("✅ Kết nối Supabase thành công!")
+        return supabase_client
+        
+    except ImportError:
+        st.error("❌ Thiếu package 'supabase'. Thêm 'supabase' vào requirements.txt")
+        return None
     except Exception as e:
-        st.error(f"Lỗi kết nối Supabase: {e}")
+        st.error(f"❌ Lỗi kết nối Supabase: {e}")
+        st.info("💡 Hướng dẫn: Vào Settings > Secrets trong Streamlit Cloud để thêm SUPABASE_URL và SUPABASE_KEY")
         return None
 
+# Khởi tạo Supabase client
 supabase: Client = init_supabase_connection()
 
-try:
-    GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
-except KeyError:
-    st.error("❌ Chưa cấu hình GOOGLE_API_KEY trong secrets!")
-    st.stop()
+# Cấu hình Google API
+def init_google_api():
+    """Khởi tạo Google API với error handling cho Streamlit Cloud"""
+    try:
+        if "GOOGLE_API_KEY" not in st.secrets:
+            st.error("❌ GOOGLE_API_KEY chưa được cấu hình trong Streamlit Cloud secrets!")
+            st.info("💡 Vào Settings > Secrets để thêm GOOGLE_API_KEY")
+            st.stop()
+        
+        google_api_key = st.secrets["GOOGLE_API_KEY"]
+        
+        # Import và cấu hình Google Generative AI
+        import google.generativeai as genai
+        genai.configure(api_key=google_api_key)
+        
+        st.success("✅ Google API đã được cấu hình!")
+        return google_api_key
+        
+    except ImportError:
+        st.error("❌ Thiếu package 'google-generativeai'. Kiểm tra requirements.txt")
+        st.stop()
+    except Exception as e:
+        st.error(f"❌ Lỗi cấu hình Google API: {e}")
+        st.stop()
 
+# Khởi tạo Google API
+GOOGLE_API_KEY = init_google_api()
+
+# Debug thông tin (có thể xóa sau khi hoạt động ổn định)
+with st.sidebar:
+    st.subheader("🔧 Trạng thái kết nối")
+    if supabase:
+        st.success("✅ Supabase: Đã kết nối")
+    else:
+        st.error("❌ Supabase: Chưa kết nối")
+    
+    if GOOGLE_API_KEY:
+        st.success("✅ Google API: Đã cấu hình")
+    else:
+        st.error("❌ Google API: Chưa cấu hình")
+           
 # --- 2. CÁC HÀM CŨ (Quản lý FAQ và Lịch sử) ---
 @st.cache_data(ttl=600)
 def get_faqs():
