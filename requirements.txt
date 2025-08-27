@@ -18,3 +18,4 @@ langchain-google-genai
 pypdf # Để LangChain đọc file PDF
 faiss-cpu # Vector store để lưu trữ và tìm kiếm thông tin
 sentence-transformers # Để chạy model embedding (chuyển chữ thành số)
+google-generativeai
