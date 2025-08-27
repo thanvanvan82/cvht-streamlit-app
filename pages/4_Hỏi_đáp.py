@@ -18,7 +18,6 @@ import os
 # --- 1. KẾT NỐI VỚI SUPABASE & GOOGLE (Cấu hình) ---
 MANIFEST_URL_DEFAULT = "https://raw.githubusercontent.com/thanvanvan82/cvht-streamlit-app/main/manifest.json"
 
-
 @st.cache_resource
 def init_supabase_connection():
     """Khởi tạo kết nối Supabase với error handling cho Streamlit Cloud"""
