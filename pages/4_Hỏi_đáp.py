@@ -79,20 +79,7 @@ def init_google_api():
 
 # Khởi tạo Google API
 GOOGLE_API_KEY = init_google_api()
-
-# Debug thông tin (có thể xóa sau khi hoạt động ổn định)
-with st.sidebar:
-    st.subheader("🔧 Trạng thái kết nối")
-    if supabase:
-        st.success("✅ Supabase: Đã kết nối")
-    else:
-        st.error("❌ Supabase: Chưa kết nối")
-    
-    if GOOGLE_API_KEY:
-        st.success("✅ Google API: Đã cấu hình")
-    else:
-        st.error("❌ Google API: Chưa cấu hình")
-           
+          
 # --- 2. CÁC HÀM CŨ (Quản lý FAQ và Lịch sử) ---
 @st.cache_data(ttl=600)
 def get_faqs():
